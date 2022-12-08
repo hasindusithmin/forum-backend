@@ -2,13 +2,9 @@
 const {Router} = require('express')
 const songModel = require('../models/song')
 
-const forumRoute = Router()
+const songRoute = Router()
 
-forumRoute.get('/',(req,res)=>{
-    res.send({detail:'Use this endpoint to interact with forum.'})
-})
-
-forumRoute.get('/song',async(req,res)=>{
+songRoute.get('/',async(req,res)=>{
     try {
         const songs = await songModel.find()
         res.status(200).json(songs)
@@ -17,7 +13,7 @@ forumRoute.get('/song',async(req,res)=>{
     }
 })
 
-forumRoute.get('/find-songbyid/:id',async(req,res)=>{
+songRoute.get('/findbyid/:id',async(req,res)=>{
     try {
         const {id} = req.params;
         const songs = await songModel.findOne({_id:id})
@@ -27,7 +23,7 @@ forumRoute.get('/find-songbyid/:id',async(req,res)=>{
     }
 })
 
-forumRoute.get('/find-songbyname/:name',async(req,res)=>{
+songRoute.get('/findbyname/:name',async(req,res)=>{
     try {
         const {name} = req.params;
         const songs = await songModel.findOne({song:name})
@@ -37,4 +33,4 @@ forumRoute.get('/find-songbyname/:name',async(req,res)=>{
     }
 })
 
-module.exports = forumRoute;
+module.exports = songRoute;

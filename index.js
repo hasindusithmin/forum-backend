@@ -1,7 +1,7 @@
 
 const express = require('express')
 const mongoose = require('mongoose')
-const forumRoute = require('./routes/forum')
+const songRoute = require('./routes/song')
 
 // Create application object 
 const app = express()
@@ -10,7 +10,7 @@ app.get('/',(req,res)=>{
     res.json(req.headers)
 })
 
-app.use('/forum',forumRoute)
+app.use('/song',songRoute)
 
 mongoose.set('strictQuery',true)
 mongoose.connect(process.env.SRV)

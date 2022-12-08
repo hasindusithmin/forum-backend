@@ -1,7 +1,7 @@
 
 
 const {Router} = require('express')
-const songsbysongsbysingerModel = require('../models/songsbysinger')
+const songsbysingerModel = require('../models/songsbysinger')
 
 const songsbysingerRoute = Router()
 

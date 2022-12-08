@@ -2,6 +2,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const songRoute = require('./routes/song')
+const singerRoute = require('./routes/singer')
 
 // Create application object 
 const app = express()
@@ -11,6 +12,7 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/song',songRoute)
+app.use('/singer',singerRoute)
 
 mongoose.set('strictQuery',true)
 mongoose.connect(process.env.SRV)

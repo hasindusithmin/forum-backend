@@ -33,4 +33,4 @@ singerRoute.get('/findbyname/:name',async(req,res)=>{
     }
 })
 
-module.exports = songRoute;
+module.exports = singerRoute;

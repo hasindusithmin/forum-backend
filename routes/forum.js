@@ -8,9 +8,29 @@ forumRoute.get('/',(req,res)=>{
     res.send({detail:'Use this endpoint to interact with forum.'})
 })
 
-forumRoute.get('/songs',async(req,res)=>{
+forumRoute.get('/song',async(req,res)=>{
     try {
         const songs = await songModel.find()
+        res.status(200).json(songs)
+    } catch (error) {
+        res.status(500).json({error:error.message})
+    }
+})
+
+forumRoute.get('/find-songbyid/:id',async(req,res)=>{
+    try {
+        const {id} = req.params;
+        const songs = await songModel.findOne({_id:id})
+        res.status(200).json(songs)
+    } catch (error) {
+        res.status(500).json({error:error.message})
+    }
+})
+
+forumRoute.get('/find-songbyname/:name',async(req,res)=>{
+    try {
+        const {name} = req.params;
+        const songs = await songModel.findOne({song:name})
         res.status(200).json(songs)
     } catch (error) {
         res.status(500).json({error:error.message})

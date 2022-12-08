@@ -8,7 +8,7 @@ forumRoute.get('/',(req,res)=>{
     res.send({detail:'Use this endpoint to interact with forum.'})
 })
 
-forumRoute.get('/song',async(req,res)=>{
+forumRoute.get('/songs',async(req,res)=>{
     try {
         const songs = await songModel.find()
         res.status(200).json(songs)

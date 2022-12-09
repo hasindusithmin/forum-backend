@@ -1,12 +1,15 @@
 
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const songRoute = require('./routes/song')
 const singerRoute = require('./routes/singer')
 const songsbysingerRoute = require('./routes/songsbysinger') 
 
 // Create application object 
 const app = express()
+
+app.use(cors())
 
 app.get('/',(req,res)=>{
     res.json(req.headers)
@@ -15,6 +18,7 @@ app.get('/',(req,res)=>{
 app.use('/song',songRoute)
 app.use('/singer',singerRoute)
 app.use('/songsbysinger',songsbysingerRoute)
+
 
 mongoose.set('strictQuery',true)
 mongoose.connect(process.env.SRV)
